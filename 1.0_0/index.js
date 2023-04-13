@@ -1,16 +1,12 @@
-//make tab key work
+// enable tab key
 document.getElementById('js-note-container').addEventListener('keydown', function(event) {
-  //detect 'tab' key
   if(event.key === 'Tab'){
-    //prevent focusing on next element
     event.preventDefault();
-    //add tab
     document.execCommand('insertHTML', false, '&#009');
   }
-
 });
 
-// On ENTER, matches tab indent of previous line
+// on ENTER, matches tab indent of previous line
 document.getElementById('js-note-container').addEventListener('keydown', function(event) {
   if(event.key === 'Enter') {
     event.preventDefault();
@@ -19,14 +15,12 @@ document.getElementById('js-note-container').addEventListener('keydown', functio
     let lastNewLineIndex = textBeforeCursor.lastIndexOf('\n');
     let previousLineText = textBeforeCursor.substring(lastNewLineIndex+1);
     let tabCount = previousLineText.match(/^\t*/)[0].length;
-
     if(previousLineText.length > 0 && tabCount === 0) {
       document.execCommand('insertHTML', false, '\n');
       document.execCommand('insertHTML', false, '\n');
     } else if(previousLineText.length === 0 || tabCount > 0) {
       document.execCommand('insertHTML', false, '\n');
     }
-
     for(let i = 0; i < tabCount; i++) {
       document.execCommand('insertHTML', false, '&#009');
     }
@@ -39,6 +33,11 @@ document.querySelector("#js-note-container").innerHTML = localStorage.getItem("n
 });
 document.querySelector("#js-note-container").addEventListener("input", function() {
 localStorage.setItem("notes", this.innerHTML);
+});
+
+//reload changes when tab gets focus
+window.addEventListener("focus", function() {
+  document.querySelector("#js-note-container").innerHTML = localStorage.getItem("notes");
 });
 
 //strip pastes to plain text
