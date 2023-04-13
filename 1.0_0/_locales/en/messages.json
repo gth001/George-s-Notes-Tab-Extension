@@ -1,0 +1,14 @@
+{
+   "extDesc": {
+      "description": "The description of the extension, displayed in the web store.",
+      "message": "New tabs become a notepad"
+   },
+   "extName": {
+      "description": "The title of the extension, displayed in the web store.",
+      "message": "George's Notes Tab"
+   },
+   "tabTitle": {
+      "description": "New tab page title.",
+      "message": "Notes"
+   }
+}
