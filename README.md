@@ -2,6 +2,8 @@
 
 An extension for Chromium browsers, which enables notetaking on new tabs.
 
+It means you no longer need a seperate text editor open as a scratchpad.
+
 Notes are automatically saved and persist across browser sessions and tabs.
 
 Tab indenting is IDE style, in other words the tab indent level is preserved on newlines.
