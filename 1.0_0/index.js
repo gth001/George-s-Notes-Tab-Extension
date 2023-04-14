@@ -49,5 +49,6 @@ document.querySelector("#js-note-container").addEventListener("paste", function(
     } else if (window.clipboardData && window.clipboardData.getData) {
         text = window.clipboardData.getData("Text");
     }
+    text = text.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
     document.execCommand("insertHTML", false, text);
 });
