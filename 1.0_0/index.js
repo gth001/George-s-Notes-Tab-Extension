@@ -1,29 +1,19 @@
-// enable tab key
+// enable tab key &
+// on ENTER, matches tab indent of previous line
 document.getElementById('js-note-container').addEventListener('keydown', function(event) {
   if(event.key === 'Tab'){
     event.preventDefault();
     document.execCommand('insertHTML', false, '&#009');
-  }
-});
-
-// on ENTER, matches tab indent of previous line
-document.getElementById('js-note-container').addEventListener('keydown', function(event) {
-  if(event.key === 'Enter') {
+  } else if (event.key === 'Enter') {
     event.preventDefault();
-    let cursorPosition = window.getSelection().getRangeAt(0).startOffset;
-    let textBeforeCursor = this.innerText.substring(0, cursorPosition);
-    let lastNewLineIndex = textBeforeCursor.lastIndexOf('\n');
-    let previousLineText = textBeforeCursor.substring(lastNewLineIndex+1);
-    let tabCount = previousLineText.match(/^\t*/)[0].length;
-    if(previousLineText.length > 0 && tabCount === 0) {
-      document.execCommand('insertHTML', false, '\n');
-      document.execCommand('insertHTML', false, '\n');
-    } else if(previousLineText.length === 0 || tabCount > 0) {
-      document.execCommand('insertHTML', false, '\n');
-    }
-    for(let i = 0; i < tabCount; i++) {
-      document.execCommand('insertHTML', false, '&#009');
-    }
+    let selection = window.getSelection();
+    let range = selection.getRangeAt(0);
+    let node = range.startContainer;
+    let text = node.textContent;
+    let startOffset = range.startOffset;
+    let lineStart = text.lastIndexOf('\n', startOffset - 1) + 1;
+    let tabs = text.slice(lineStart).match(/^\t*/)[0];
+    document.execCommand('insertHTML', false, '\n' + (tabs || ''));
   }
 });
 
