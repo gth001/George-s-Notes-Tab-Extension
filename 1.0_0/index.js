@@ -13,7 +13,11 @@ document.getElementById('js-note-container').addEventListener('keydown', functio
     let startOffset = range.startOffset;
     let lineStart = text.lastIndexOf('\n', startOffset - 1) + 1;
     let tabs = text.slice(lineStart).match(/^\t*/)[0];
-    document.execCommand('insertHTML', false, '\n' + (tabs || '\n'));
+    if (tabs) {
+      document.execCommand('insertHTML', false, '\n' + tabs);
+    } else {
+      document.execCommand('insertHTML', false, '\n\n');
+    }
   }
 });
 
