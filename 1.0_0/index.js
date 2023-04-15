@@ -13,7 +13,7 @@ document.getElementById('js-note-container').addEventListener('keydown', functio
     let startOffset = range.startOffset;
     let lineStart = text.lastIndexOf('\n', startOffset - 1) + 1;
     let tabs = text.slice(lineStart).match(/^\t*/)[0];
-    document.execCommand('insertHTML', false, '\n' + (tabs || ''));
+    document.execCommand('insertHTML', false, '\n' + (tabs || '\n'));
   }
 });
 
@@ -34,11 +34,7 @@ window.addEventListener("focus", function() {
 document.querySelector("#js-note-container").addEventListener("paste", function(e) {
     e.preventDefault();
     var text = "";
-    if (e.clipboardData && e.clipboardData.getData) {
-        text = e.clipboardData.getData("text/plain");
-    } else if (window.clipboardData && window.clipboardData.getData) {
-        text = window.clipboardData.getData("Text");
-    }
+    text = e.clipboardData.getData("text/plain");
     text = text.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
     document.execCommand("insertHTML", false, text);
 });
