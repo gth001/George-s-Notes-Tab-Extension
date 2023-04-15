@@ -4,16 +4,15 @@
    },
    "default_locale": "en",
    "description": "__MSG_extDesc__",
-   "homepage_url": "https://github.com/",
+   "homepage_url": "https://github.com/gth001/George-s-Notes-Tab-Extension",
    "icons": {
       "128": "icons/ext/128.png",
       "16": "icons/ext/16.png",
       "32": "icons/ext/32.png",
       "48": "icons/ext/48.png"
    },
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAloLVyS+Wib2dMPx9wguOf1MM7e2eh1lTd2S5Hiwnwi9ztIv1SC6IQkyCrxV4BToJyIQc5wzMJ1c7SYFohK7PR9vaj5d9Wdhj6Tg1FjBWdJ7JBkN9B+G++LLLIXkIFQAeaYa2990YwANOAJf0lwbawgHcu3/oIf+Qncmr5d4jugKG80of8y+4LMpoe0gXG9OQFgdfnGD4MOgzwbmbXqXfasfPKcw2foRaC9VBTQ+TYY0tusDgKnnyE8Q4xKkQ5LCaDqVSrs7DUu6Z4vn8mb+vPvPnATL8lCW+SCzXL3LUprH2io6sVc/aanArBkL8uvGcOi0Dyivj7EniXd6bT9FlswIDAQAB",
    "manifest_version": 3,
    "name": "__MSG_extName__",
    "update_url": "https://edge.microsoft.com/extensionwebstorebase/v1/crx",
-   "version": "2.2.0"
+   "version": "1.0"
 }
