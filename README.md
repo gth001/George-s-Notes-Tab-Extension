@@ -16,6 +16,10 @@ I haven't added it to Chrome/Edge stores yet since I made it for myself.
 
 ## Install instructions
 
+### Edge store
+
+https://microsoftedge.microsoft.com/addons/detail/makcelaohlgpmngkcdfhedefphcnjgjn
+
 ### Simple instructions for experienced users
 
 Download this repo and drag the 1.0_0 folder into your extensions page. 
