@@ -16,11 +16,11 @@ document.getElementById('js-note-container').addEventListener('keydown', functio
         if (lineEnd === -1) {
             lineEnd = text.length;
         }
-        if (tabs) {
+        if (tabs) { // line has an indent
             document.execCommand('insertHTML', false, '\n' + tabs);
-        } else if (text.slice(lineStart, lineEnd).trim() === '' && startOffset === text.length) {  //runs when line blank and its the end
-            document.execCommand('insertHTML', false, '\n\n\n\n');
-        } else {  //runs when line blank and the end
+        } else if (text.slice(lineStart, lineEnd).trim() !== '' && startOffset === text.length) {  // last line, not blank
+            document.execCommand('insertHTML', false, '\n\n'); // for some reason we need two newlines to make one
+        } else { 
             document.execCommand('insertHTML', false, '\n');  
         }
     }
