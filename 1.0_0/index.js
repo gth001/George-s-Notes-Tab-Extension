@@ -1,27 +1,29 @@
 // enable tab key and indenting
 document.getElementById('js-note-container').addEventListener('keydown', function(event) {
-  if(event.key === 'Tab'){
-    event.preventDefault();
-    document.execCommand('insertHTML', false, '&#009');
-  } else if (event.key === 'Enter') {
-    event.preventDefault();
-    let selection = window.getSelection();
-    let range = selection.getRangeAt(0);
-    let node = range.startContainer;
-    let text = node.textContent;
-    let startOffset = range.startOffset;
-    let lineStart = text.lastIndexOf('\n', startOffset - 1) + 1;
-    let tabs = text.slice(lineStart).match(/^\t*/)[0];
-    let lineEnd = text.indexOf('\n', startOffset);
-    if (lineEnd === -1) {
-      lineEnd = text.length;
+    if(event.key === 'Tab'){
+        event.preventDefault();
+        document.execCommand('insertHTML', false, '&#009');
+    } else if (event.key === 'Enter') {
+        event.preventDefault();
+        let selection = window.getSelection();
+        let range = selection.getRangeAt(0);
+        let node = range.startContainer;
+        let text = node.textContent;
+        let startOffset = range.startOffset;
+        let lineStart = text.lastIndexOf('\n', startOffset - 1) + 1;
+        let tabs = text.slice(lineStart).match(/^\t*/)[0];
+        let lineEnd = text.indexOf('\n', startOffset);
+        if (lineEnd === -1) {
+            lineEnd = text.length;
+        }
+        if (tabs) {
+            document.execCommand('insertHTML', false, '\n' + tabs);
+        } else if (text.slice(lineStart, lineEnd).trim() === '' && startOffset === text.length) {  //runs when line blank and its the end
+            document.execCommand('insertHTML', false, '\n\n\n\n');
+        } else {  //runs when line blank and the end
+            document.execCommand('insertHTML', false, '\n');  
+        }
     }
-    if (tabs || text.slice(lineStart, lineEnd).trim() === '') {
-      document.execCommand('insertHTML', false, '\n' + tabs);
-    } else {
-      document.execCommand('insertHTML', false, '\n\n');
-    }
-  }
 });
 
 //autosave input 
