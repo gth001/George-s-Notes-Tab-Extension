@@ -12,24 +12,8 @@ Notes are automatically saved and persist across browser sessions and tabs.
 
 Tab indenting is IDE style, in other words the tab indent level is preserved on newlines.
 
-## Install instructions
+Markdown and HTML links will render as links, and can be opened with right click.
 
-### Edge store
+## Install
 
-https://microsoftedge.microsoft.com/addons/detail/makcelaohlgpmngkcdfhedefphcnjgjn
-
-### Chrome store
-
-![](https://i.gyazo.com/e10891027c60642be476a0572f9ab073.png)
-
-Send me $5 and I'll upload it, lol.
-
-### Simple instructions for experienced users
-
-Download this repo and drag the 1.0_0 folder into your extensions page. 
-
-### I need more detailed instructions
-
-- [Sideload an extension - Microsoft Edge Development | Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading)
-- [How to Manually Install A Chrome Extension In Two Steps](https://www.thesslstore.com/blog/install-a-chrome-extension/)
-
+https://chrome.google.com/webstore/detail/georges-notes-tab/ehbecnegnopgpflhmpboopmkjgndjhdo
