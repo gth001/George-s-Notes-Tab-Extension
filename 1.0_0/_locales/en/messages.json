@@ -1,7 +1,7 @@
 {
    "extDesc": {
       "description": "The description of the extension, displayed in the web store.",
-      "message": "New tabs become a notepad"
+      "message": "Turn your new tabs into a personal notebook!"
    },
    "extName": {
       "description": "The title of the extension, displayed in the web store.",
