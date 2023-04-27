@@ -47,3 +47,14 @@ document.querySelector("#js-note-container").addEventListener("paste", function(
     text = text.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
     document.execCommand("insertHTML", false, text);
 });
+
+// open links in new tabs when clicked
+document.querySelector("#js-note-container").addEventListener("click", function(e) {
+    let link = e.target;
+    if (link && link.tagName === "A") {
+        window.open(link.href, "_blank");
+    }
+});
+
+
+
