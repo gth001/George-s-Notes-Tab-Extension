@@ -39,11 +39,13 @@ window.addEventListener("focus", function() {
   document.querySelector("#js-note-container").innerHTML = localStorage.getItem("notes");
 });
 
-//strip pastes to plain text
+//paste hyperlinks as hyperlinks
 document.querySelector("#js-note-container").addEventListener("paste", function(e) {
     e.preventDefault();
-    var text = "";
-    text = e.clipboardData.getData("text/plain");
+    var text = e.clipboardData.getData("text/html");
+    if (!text) {
+        text = e.clipboardData.getData("text/plain");
+    }
     text = text.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
     document.execCommand("insertHTML", false, text);
 });
@@ -55,6 +57,3 @@ document.querySelector("#js-note-container").addEventListener("click", function(
         window.open(link.href, "_blank");
     }
 });
-
-
-
