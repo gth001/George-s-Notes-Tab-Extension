@@ -68,5 +68,21 @@ document.addEventListener('cut', function(event) {
   }
 });
 
-
-
+// Read Aloud
+var synth = window.speechSynthesis;
+// Chrome loads voices asynchronously.
+window.speechSynthesis.onvoiceschanged = function(e) {
+    var voices = synth.getVoices();
+    var voice = voices.find(voice => voice.name === "Microsoft Steffan Online (Natural) - English (United States)");
+    window.addEventListener('keydown', function(event) {
+        if (event.metaKey && event.code === 'KeyR') {
+            event.preventDefault();
+            var utterance = new SpeechSynthesisUtterance(document.querySelector("#js-note-container").innerText);
+            utterance.voice = voice;
+            utterance.rate = 2;
+            utterance.pitch = 1.1;
+            utterance.volume = 1;
+            synth.speak(utterance);
+        }
+    });
+};
