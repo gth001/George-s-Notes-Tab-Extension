@@ -1,9 +1,14 @@
-// enable tab key and indenting
+// replace tab key function to be insert tab character
 document.getElementById('js-note-container').addEventListener('keydown', function(event) {
     if(event.key === 'Tab'){
         event.preventDefault();
         document.execCommand('insertHTML', false, '&#009');
-    } else if (event.key === 'Enter') {
+    }
+});
+
+// enable indenting 
+document.getElementById('js-note-container').addEventListener('keydown', function(event) {
+    if(event.key === 'Enter') {
         event.preventDefault();
         let selection = window.getSelection();
         let range = selection.getRangeAt(0);
@@ -39,21 +44,29 @@ window.addEventListener("focus", function() {
   document.querySelector("#js-note-container").innerHTML = localStorage.getItem("notes");
 });
 
-//paste hyperlinks as hyperlinks
-document.querySelector("#js-note-container").addEventListener("paste", function(e) {
-    e.preventDefault();
-    var text = e.clipboardData.getData("text/html");
-    if (!text) {
-        text = e.clipboardData.getData("text/plain");
-    }
-    text = text.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
-    document.execCommand("insertHTML", false, text);
+// paste only as plain text.
+document.getElementById('js-note-container').addEventListener('paste', function(e) {
+  e.preventDefault();
+  var text = e.clipboardData.getData('text/plain');
+  document.execCommand('insertText', false, text);
 });
 
-// open links in new tabs when clicked
-document.querySelector("#js-note-container").addEventListener("click", function(e) {
-    let link = e.target;
-    if (link && link.tagName === "A") {
-        window.open(link.href, "_blank");
-    }
+// cut/copy as plain text
+document.addEventListener('copy', function(event) {
+  event.preventDefault();
+  var selectedText = window.getSelection().toString();
+  if (selectedText) {
+    event.clipboardData.setData('text/plain', selectedText);
+  }
 });
+document.addEventListener('cut', function(event) {
+  event.preventDefault();
+  var selectedText = window.getSelection().toString();
+  if (selectedText) {
+    event.clipboardData.setData('text/plain', selectedText);
+    document.execCommand('delete');
+  }
+});
+
+
+
