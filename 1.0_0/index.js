@@ -24,7 +24,7 @@ document.getElementById('js-note-container').addEventListener('keydown', functio
         if (tabs) { // line has an indent
             document.execCommand('insertHTML', false, '\n' + tabs);
         } else if (text.slice(lineStart, lineEnd).trim() !== '' && startOffset === text.length) {  // last line, not blank
-            document.execCommand('insertHTML', false, '\n\n'); // for some reason we need two newlines to make one
+            document.execCommand('insertHTML', false, '\n\n'); // for some reason we need two newlines to make one show up
         } else { 
             document.execCommand('insertHTML', false, '\n');  
         }
@@ -86,3 +86,13 @@ window.speechSynthesis.onvoiceschanged = function(e) {
         }
     });
 };
+
+// Function to update the tab title
+function updateTabTitle() {
+    const content = document.getElementById('js-note-container').textContent.trim();
+    const title = content.slice(0, 32);
+    document.title = title;
+}
+
+// Add an event listener to the div to update the tab title on input
+document.getElementById('js-note-container').addEventListener('input', updateTabTitle);
